@@ -1,33 +1,39 @@
-import { spawn } from 'child_process';
+import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import compression from 'compression';
 import fs from 'fs';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const serverPath = path.join(__dirname, 'server', 'index.ts');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-console.log('Starting server from:', serverPath);
-console.log('File exists:', fs.existsSync(serverPath));
+const app = express();
 
-try {
-  // List files in the server directory
-  const serverDir = path.join(__dirname, 'server');
-  console.log('Server directory contents:', fs.readdirSync(serverDir));
+// Включаем сжатие
+app.use(compression());
 
-  // Use tsx to run the TypeScript file directly
-  const server = spawn('npx', ['tsx', serverPath], {
-    stdio: 'inherit',
-    env: process.env
+// Статические файлы
+const distPath = path.join(__dirname, 'dist/public');
+app.use(express.static(distPath));
+
+// API маршруты
+app.get('/api/hello', (req, res) => {
+  res.json({ message: 'Hello from API!' });
+});
+
+// Маршрут для всех остальных запросов - отдаем index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(distPath, 'index.html'));
+});
+
+// Проверяем, запущено ли приложение через Vercel или локально
+if (process.env.VERCEL) {
+  // На Vercel, экспортируем приложение
+  export default app;
+} else {
+  // Локально, запускаем сервер на порту
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
   });
-
-  server.on('error', (err) => {
-    console.error('Failed to start server:', err);
-  });
-
-  process.on('SIGINT', () => {
-    server.kill();
-    process.exit();
-  });
-} catch (error) {
-  console.error('Error starting server:', error);
 } 
