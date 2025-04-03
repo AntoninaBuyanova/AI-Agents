@@ -1,5 +1,4 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom/client';
+import { React, ReactDOMClient } from './react-fix';
 import App from './App';
 import './index.css';
 
@@ -38,7 +37,7 @@ const renderApp = () => {
   }
   
   if (root) {
-    ReactDOM.createRoot(root).render(
+    ReactDOMClient.createRoot(root).render(
       <React.StrictMode>
         <React.Suspense fallback={<LoadingIndicator />}>
           <App />

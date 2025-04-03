@@ -23,6 +23,9 @@
   
   <!-- Preload critical JS -->
   <link rel="modulepreload" href="/src/main.tsx" />
+  <link rel="modulepreload" href="/src/react-fix.ts" />
+  <link rel="modulepreload" href="/node_modules/react/index.js" />
+  <link rel="modulepreload" href="/node_modules/react-dom/index.js" />
   
   <!-- Resource hints for better performance -->
   <link rel="preconnect" href="/" crossorigin />
@@ -32,6 +35,9 @@
   
   <!-- Disable FLoC for privacy -->
   <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+  
+  <!-- React preloading to prevent "Cannot read property 'useState' of undefined" error -->
+  <script src="/react-preload.js"></script>
   
   <!-- Meta tags for social sharing -->
   <meta property="og:title" content="MyStylus - AI Assistant for Students">
