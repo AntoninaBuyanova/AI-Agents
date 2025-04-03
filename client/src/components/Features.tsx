@@ -52,16 +52,22 @@ const Features: React.FC = () => {
               <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 font-aeonik">
                 Each model has its strength — we pick the right one for your question, so you don't waste time or money switching between them
               </p>
-              <button className="hidden md:block px-[3.75rem] py-[1.125rem] bg-[#232323] text-white rounded-full text-lg font-aeonik font-medium">
+              <a 
+                href="https://mystylus.ai/chat-agents"
+                className="hidden md:inline-block px-[3.75rem] py-[1.125rem] bg-[#232323] text-white rounded-full text-lg font-aeonik font-medium"
+              >
                 Get Started
-              </button>
+              </a>
             </div>
             
             {/* Mobile Get Started button */}
             <div className="block md:hidden">
-              <button className="w-full px-[3.75rem] py-[1.125rem] bg-[#232323] text-white rounded-full text-lg font-aeonik font-medium">
+              <a 
+                href="https://mystylus.ai/chat-agents"
+                className="w-full px-[3.75rem] py-[1.125rem] bg-[#232323] text-white rounded-full text-lg font-aeonik font-medium inline-block text-center"
+              >
                 Get Started
-              </button>
+              </a>
             </div>
           </div>
         </div>

@@ -23,9 +23,12 @@ const HeroSection: React.FC = () => {
             The world's top AI models, working together to answer your question
           </p>
           <div className="flex justify-center md:mb-16">
-            <button className="w-[280px] md:w-auto px-6 md:px-[3.75rem] py-3 md:py-[1.125rem] bg-[#232323] text-white rounded-full text-base md:text-[20px] font-aeonik font-medium">
+            <a 
+              href="https://mystylus.ai/chat-agents"
+              className="w-[280px] md:w-auto px-6 md:px-[3.75rem] py-3 md:py-[1.125rem] bg-[#232323] text-white rounded-full text-base md:text-[20px] font-aeonik font-medium"
+            >
               Get Started – it's free
-            </button>
+            </a>
           </div>
 
           {/* University Logos */}

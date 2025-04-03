@@ -15,7 +15,7 @@ const Header: React.FC = () => {
           
           {/* Get Started Button */}
           <a 
-            href="#" 
+            href="https://mystylus.ai/chat-agents" 
             className="px-10 py-4 rounded-full bg-[#E9FF70] text-black font-aeonik font-medium hover:bg-[#dff566] transition-colors"
           >
             Get Started
