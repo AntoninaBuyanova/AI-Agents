@@ -2,38 +2,40 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import compression from 'compression';
-import fs from 'fs';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app = express();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Включаем сжатие
 app.use(compression());
 
-// Статические файлы
-const distPath = path.join(__dirname, 'dist/public');
-app.use(express.static(distPath));
-
-// API маршруты
+// Публичный API-эндпоинт для проверки
 app.get('/api/hello', (req, res) => {
-  res.json({ message: 'Hello from API!' });
+  res.json({ 
+    message: 'Hello from API!',
+    timestamp: new Date().toISOString(),
+    env: process.env.NODE_ENV
+  });
 });
 
-// Маршрут для всех остальных запросов - отдаем index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(distPath, 'index.html'));
-});
+// Статические файлы (работает в локальной среде)
+const distPath = path.join(__dirname, 'dist/public');
+if (process.env.NODE_ENV !== 'production') {
+  app.use(express.static(distPath));
+  
+  // Маршрут для всех остальных запросов - отдаем index.html
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(distPath, 'index.html'));
+  });
+}
 
-// Проверяем, запущено ли приложение через Vercel или локально
-if (process.env.VERCEL) {
-  // На Vercel, экспортируем приложение
-  export default app;
-} else {
-  // Локально, запускаем сервер на порту
+// Локально запускаем сервер на порту 
+if (!process.env.VERCEL) {
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
   });
-} 
+}
+
+// Экспортируем приложение для Vercel
+export default app; 
