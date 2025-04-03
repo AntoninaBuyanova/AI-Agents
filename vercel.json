@@ -1,24 +1,12 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
-  "outputDirectory": "dist/public",
-  "framework": null,
-  "functions": {
-    "server/index.js": {
-      "memory": 1024,
-      "maxDuration": 10
-    }
-  },
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/server/index.js"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
-    }
+  "builds": [
+    { "src": "server.js", "use": "@vercel/node" },
+    { "src": "package.json", "use": "@vercel/static-build" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "server.js" },
+    { "src": "/(.*)", "dest": "/dist/public/$1" }
   ],
   "env": {
     "NODE_ENV": "production"
