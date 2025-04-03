@@ -105,7 +105,7 @@ export async function setupVite(app: Express, server: Server) {
   const serverOptions = {
     middlewareMode: true,
     hmr: { server },
-    allowedHosts: ['localhost', '127.0.0.1', '.replit.dev']
+    allowedHosts: ['localhost', '127.0.0.1']
   };
 
   const vite = await createViteServer({
@@ -122,7 +122,7 @@ export async function setupVite(app: Express, server: Server) {
     appType: "custom",
   });
 
-  // Middleware to override Replit platform headers before Vite middleware
+  // Middleware to override platform headers before Vite middleware
   app.use((req, res, next) => {
     overridePlatformHeaders(res);
     next();

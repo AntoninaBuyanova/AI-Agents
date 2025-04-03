@@ -33,8 +33,7 @@ app.get('/check-headers', (req, res) => {
       host: req.get('host'),
       forwarded: req.get('x-forwarded-for'),
       forwardedHost: req.get('x-forwarded-host'),
-      forwardedProto: req.get('x-forwarded-proto'),
-      replitId: process.env.REPL_ID
+      forwardedProto: req.get('x-forwarded-proto')
     }
   });
 });
