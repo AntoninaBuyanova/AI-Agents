@@ -1,0 +1,9 @@
+# Allow all web crawlers to access all content
+User-agent: *
+Allow: /
+
+# X-Robots-Tag: index, follow
+# This site explicitly allows indexing by search engines
+
+# Sitemap URL
+Sitemap: https://mystylus.ai/sitemap.xml 

@@ -1,8 +1,23 @@
+/* postcss-import: true */
+/*!
+ * Tailwind CSS v3.x
+ * 
+ * This file uses Tailwind CSS directives.
+ * VS Code might show validation warnings that can be safely ignored.
+ *
+ * See: https://tailwindcss.com/docs/installation
+ */
+
 @import './fonts/index.css';
+
+/* pre-flight styles */
 @tailwind base;
+/* component styles */
 @tailwind components;
+/* utility styles */
 @tailwind utilities;
 
+/* Custom layered styles */
 @layer base {
   * {
     @apply border-border;

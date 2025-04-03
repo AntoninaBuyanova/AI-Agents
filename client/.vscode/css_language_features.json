@@ -1,0 +1,12 @@
+{
+  "css.lint.unknownAtRules": "ignore",
+  "css.lint.unknownProperties": "ignore",
+  "css.lint.validProperties": [
+    "composes",
+    "compose-with",
+    "@apply",
+    "@layer",
+    "@tailwind"
+  ],
+  "scss.lint.unknownAtRules": "ignore"
+} 

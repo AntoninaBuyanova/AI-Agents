@@ -7,13 +7,11 @@ const HeroSection: React.FC = () => {
     <section className="pt-6 pb-6 md:pt-20 md:pb-20 overflow-hidden bg-[#FFFFFF]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mx-auto">
-          {/* User count banner */}
-          <div className="inline-flex items-center gap-2 mb-6 md:mb-8 border border-[#E8E8E5] rounded-full px-4 py-2">
-            <img src="/users.png" alt="User avatars" className="h-6 md:h-8 w-auto" />
-            <div className="text-sm md:text-base text-[#232323] font-aeonik">
-              <span className="font-normal">Loved by </span>
-              <span className="font-medium">500k+ users</span>
-            </div>
+          {/* Powered by banner */}
+          <div className="inline-flex items-center gap-3 mb-6 md:mb-8 border border-[#E8E8E5] rounded-[100px] px-4 py-2">
+            <span className="text-[#232323] text-[16px] leading-[24px] font-['Aeonik_Pro'] font-medium">Powered by</span>
+            <img src="/icon.png" alt="AI model logos" className="h-10" />
+            <span className="text-[#232323] text-[16px] leading-[24px] font-['Aeonik_Pro'] font-medium">and more</span>
           </div>
 
           {/* Main heading */}

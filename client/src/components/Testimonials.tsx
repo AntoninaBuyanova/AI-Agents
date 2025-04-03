@@ -2,9 +2,9 @@ import React from 'react';
 
 const AgentBuilder: React.FC = () => {
   return (
-    <section className="pb-20 lg:py-20 bg-white">
+    <section className="py-6 md:py-10 lg:py-[3.75rem] bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
+        <div className="max-w-[1240px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
           {/* Left side - Text content */}
           <div className="md:w-1/2">
             <h2 className="text-[32px] lg:text-[52px] font-medium leading-[1.2] mb-6 text-[#232323]">

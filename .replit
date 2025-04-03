@@ -1,18 +1,37 @@
+# Main configuration for Replit
+run = "/nix/store/rrz8cqhldyl17bbs60g7d8vbaadkxc40-nodejs-20.18.1-wrapped/bin/node server/index.js"
+entrypoint = "server/index.ts"
+hidden = []
+
+# Configure search engine indexing
+[env]
+ENABLE_SEARCH_ENGINE_INDEXING = "true"
+REPLIT_DISABLE_ROBOTS_HEADERS = "true"
+DISABLE_X_ROBOTS_TAG = "true"
+PATH = "/nix/store/rrz8cqhldyl17bbs60g7d8vbaadkxc40-nodejs-20.18.1-wrapped/bin:${PATH}"
+
+[[ports]]
+localPort = 3000
+externalPort = 3000
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+# Experimental HTTP headers configuration
+[[headers]]
+path = "/*"
+headers = { X-Robots-Tag = "index, follow" }
+
 modules = ["nodejs-20", "web", "postgresql-16"]
-run = "npm run dev"
-hidden = [".config", ".git", "generated-icon.png", "node_modules", "dist"]
 
 [nix]
 channel = "stable-24_05"
 
 [deployment]
 deploymentTarget = "autoscale"
-build = ["npm", "run", "build"]
-run = ["npm", "run", "start"]
-
-[[ports]]
-localPort = 5000
-externalPort = 80
+build = ["/nix/store/rrz8cqhldyl17bbs60g7d8vbaadkxc40-nodejs-20.18.1-wrapped/bin/npm", "run", "build"]
+run = ["/nix/store/rrz8cqhldyl17bbs60g7d8vbaadkxc40-nodejs-20.18.1-wrapped/bin/npm", "run", "start"]
 
 [workflows]
 
@@ -37,5 +56,5 @@ task = "packager.installForAll"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npm run dev"
+args = "/nix/store/rrz8cqhldyl17bbs60g7d8vbaadkxc40-nodejs-20.18.1-wrapped/bin/node server/index.js"
 waitForPort = 5000

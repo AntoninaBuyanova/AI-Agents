@@ -7,9 +7,9 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4 max-w-[1240px] mx-auto">
           {/* Logo */}
-          <div className="w-[100px] md:w-[145px]">
-            <a href="https://mystylus.ai/">
-              <Logo />
+          <div className="w-[100px] md:w-[146px] h-[24px] md:h-[37px]">
+            <a href="https://mystylus.ai/" className="block w-full h-full">
+              <Logo className="w-full h-full" />
             </a>
           </div>
           

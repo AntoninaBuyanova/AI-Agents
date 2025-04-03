@@ -30,9 +30,9 @@ const FeatureCard: React.FC<{
 
 const Features: React.FC = () => {
   return (
-    <section className="pt-12 md:pt-[80px] lg:pt-28 pb-20 bg-[#FFFFFF]">
+    <section className="py-6 md:py-10 lg:py-[3.75rem] bg-[#FFFFFF]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
-        <div className="max-w-[1440px] w-full">
+        <div className="max-w-[1240px] w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 items-center">
             {/* Left side image */}
             <div className="relative w-full mx-auto md:mr-auto mb-6 md:mb-0">
