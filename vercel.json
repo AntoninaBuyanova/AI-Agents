@@ -13,6 +13,9 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/index.js" },
+    { "src": "^/favicon.svg", "dest": "/icon.png" },
+    { "src": "^/favicon-16x16.png", "dest": "/icon.png" },
+    { "src": "^/favicon-32x32.png", "dest": "/icon.png" },
     { "src": "/(.*)", "dest": "/$1" }
   ],
   "env": {

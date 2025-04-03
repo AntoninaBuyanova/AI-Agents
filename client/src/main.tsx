@@ -1,5 +1,5 @@
-import React, { lazy, Suspense } from 'react';
-import ReactDOM from 'react-dom/client';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 
@@ -40,9 +40,9 @@ const renderApp = () => {
   if (root) {
     ReactDOM.createRoot(root).render(
       <React.StrictMode>
-        <Suspense fallback={<LoadingIndicator />}>
+        <React.Suspense fallback={<LoadingIndicator />}>
           <App />
-        </Suspense>
+        </React.Suspense>
       </React.StrictMode>,
     );
   }
